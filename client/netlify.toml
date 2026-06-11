@@ -1,0 +1,26 @@
+# Netlify Configuration File
+# Place this in the root of your frontend (client) folder
+
+[build]
+  # The directory where Netlify will find the package.json to build
+  base = "client"
+  
+  # The command to compile the React app
+  command = "npm run build"
+  
+  # The directory that contains the built static files (Vite outputs to 'dist')
+  publish = "dist"
+
+[[redirects]]
+  # Redirect all frontend API calls to your deployed backend
+  # Replace 'https://your-backend-api.onrender.com' with your actual deployed backend URL!
+  from = "/api/*"
+  to = "https://your-backend-api.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  # Support React Router/SPA fallback redirects (if routing is added in the future)
+  from = "/*"
+  to = "/index.html"
+  status = 200
